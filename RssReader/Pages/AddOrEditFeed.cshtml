@@ -1,0 +1,45 @@
+﻿@page "{id:int?}"
+@model RssReader.Pages.AddOrEditFeedModel
+@{
+	if (!Model.FeedId.HasValue) 
+	{
+		ViewData["Title"] = "Add Feed";
+	} 
+	else 
+	{
+		ViewData["Title"] = "Edit Feed";
+	}
+}
+
+<div class="container-fluid">
+	<form method="post">
+		<h3>@ViewData["Title"]</h3>
+		<div asp-validation-summary="All"></div>
+		<input asp-for="FeedId" type="hidden" />
+		<div class="form-group">
+			<label asp-for="Name"></label>
+			<div>
+				<input class="form-control" asp-for="Name" />
+				<span asp-validation-for="Name"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="FeedUrl"></label>
+			<div>
+				<input class="form-control" asp-for="FeedUrl" />
+				<span asp-validation-for="FeedUrl"></span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="CategoryId"></label>
+			<div>
+				<select class="form-control" asp-items="Model.Categories" asp-for="CategoryId"></select>
+				<span asp-validation-for="CategoryId"></span>
+			</div>
+		</div>
+
+		<div>
+			<button type="submit" class="btn btn-default">Save</button>
+		</div>
+	</form>
+</div>

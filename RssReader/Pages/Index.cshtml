@@ -1,0 +1,107 @@
+﻿@page
+@model RssReader.Pages.IndexModel
+@{
+	ViewData["Title"] = "Feed items";
+}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-3">
+			<ul>
+				@if (!Model.CurrentCategoryId.HasValue && !Model.CurrentFeedId.HasValue)
+				{
+					<li>
+						All feeds
+					</li>
+				} 
+				else 
+				{
+					<li>
+						<a asp-page="Index">All feeds</a>
+					</li>
+				}
+				@foreach(var category in Model.Categories) 
+				{
+					if (Model.CurrentCategoryId.HasValue && Model.CurrentCategoryId.Value == category.Id) 
+					{
+						<li>
+							@category.Name
+						</li>	
+					}
+					else
+					{
+						<li>
+							<a asp-page="Index" asp-route-categoryId="@category.Id">@category.Name</a>
+						</li>					
+					}
+					<ul>
+						@foreach(var feed in category.Feeds) 
+						{
+							if (Model.CurrentFeedId.HasValue && Model.CurrentFeedId.Value == feed.Id) 
+							{
+								<li>
+									@feed.Name 
+								</li>
+							}
+							else
+							{
+								<li>
+									<a asp-page="Index" asp-route-feedId="@feed.Id">@feed.Name</a>
+								</li>		
+							}
+						}
+					</ul>
+				}
+			</ul>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<h3>@Model.CurrentName</h3>
+			</div>
+
+			<div class="row">
+				@if (Model.CurrentFeedId.HasValue) 
+				{
+					<span><a asp-page="AddOrEditFeed" asp-route-id="@Model.CurrentFeedId">Edit</a></span>
+				} 
+				else if (Model.CurrentCategoryId.HasValue) 
+				{
+					<span><a asp-page="AddOrEditCategory" asp-route-id="@Model.CurrentCategoryId">Edit</a></span>
+				}
+				else
+				{
+					<span>Only displaying last @Model.AllFeedsCountLimit results</span>
+				}
+			</div>
+
+			<hr/>
+			
+			<form method="post">
+				<div class="form-group">
+					<input asp-for="CurrentFeedId" type="hidden" />
+					<input asp-for="CurrentCategoryId" type="hidden" />
+					<input class="form-control" asp-for="CurrentCriteria">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit">
+						Search in @Model.CurrentName
+					</button>
+				</div>
+			</form>
+
+			@foreach(var item in Model.Items) 
+			{
+				<div class="row">
+					<a href="@item.Link" target="_blank">@item.Title</a>
+				</div>
+				<div class="row">
+					<small>@item.ParsedPublishedDate</small>
+				</div>
+				<div class="row">
+					@Html.Raw(item.Description)
+				</div>
+				<br/>
+			}			
+		</div>
+	</div>
+</div>

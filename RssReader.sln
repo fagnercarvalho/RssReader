@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RssReader", "RssReader\RssReader.csproj", "{366132B2-0C88-4C18-9BBD-CA2A0205FDD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RssReader.Data", "RssReader.Data\RssReader.Data.csproj", "{18113255-E551-414A-9541-75A428C68183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366132B2-0C88-4C18-9BBD-CA2A0205FDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366132B2-0C88-4C18-9BBD-CA2A0205FDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366132B2-0C88-4C18-9BBD-CA2A0205FDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366132B2-0C88-4C18-9BBD-CA2A0205FDD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18113255-E551-414A-9541-75A428C68183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18113255-E551-414A-9541-75A428C68183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18113255-E551-414A-9541-75A428C68183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18113255-E551-414A-9541-75A428C68183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {776EF02E-129A-4B69-ACCF-7923B8E1AF68}
+	EndGlobalSection
+EndGlobal
